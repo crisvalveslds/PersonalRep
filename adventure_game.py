@@ -1,5 +1,42 @@
-# Adventure Game
+# Adventure Game -- Cristiano Alves
+# I was very happy to create this game as I love this kind of horror stories that are interactive.
+# I asked a friend and my daughter to play the game and they really enjoyed the story and the multiple choices you can make.
+# I plan to add more small tweaks to this game in the future and expand it a bit more, maybe even convert it into a playable mini-game.
+# This game takes through the events of a special full moon night.
+# You can play this multiple times for the different outcomes and especially for the 4 different endings.
+
 import sys
+import time
+import builtins
+
+def typewriter(text, base_speed=0.03):
+    text = str(text)
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+
+        # Slower pauses on punctuation
+        if char in ".!?":
+            time.sleep(0.30)
+        elif char in ",;:":
+            time.sleep(0.15)
+        elif char in "-":
+            time.sleep(0.01)
+        else:
+            time.sleep(base_speed)
+
+    sys.stdout.write("\n")
+    sys.stdout.flush()
+
+
+def typewriter_print(*args, speed=0.03, **kwargs):
+    # Merge all args into one string (just like real print)
+    text = " ".join(str(a) for a in args)
+    typewriter(text, base_speed=speed)
+
+
+# Override the builtin print()
+builtins.print = typewriter_print
 
 def invalid_choice():
     print("Invalid choice. Please restart the game and choose a valid option.")
