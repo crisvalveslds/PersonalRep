@@ -1,6 +1,9 @@
 # Shopping Cart Program
 # It was interesting learning about lists, how to append and pop out items
 # As well as how to iterate on its items
+# I added the option to ship the products in the shopping cart
+# It uses a previously saved address and a previous payment method to process and ship it
+# And then it cleans the shopping cart to start over.
 
 products = []
 prices = []

@@ -7,7 +7,6 @@
 
 import sys
 import time
-import builtins
 
 def typewriter(text, base_speed=0.03):
     text = str(text)
@@ -36,7 +35,6 @@ def typewriter_print(*args, speed=0.03, **kwargs):
 
 
 # Override the builtin print()
-builtins.print = typewriter_print
 
 def invalid_choice():
     print("Invalid choice. Please restart the game and choose a valid option.")
@@ -54,301 +52,1052 @@ def play_game():
     fuse_found = False
     knife_taken = False
     best_ending_achieved = False
+    got_umbrella = False
 
-    print("----------------------------------")
-    print("Welcome to the Adventure Game!")
-    print("----------------------------------")
-    print("It's a dark and windy night as you drive back home.")
-    print("You knew you shouldn't have listened to that stranger's advice to take the shortcut through the woods.")
-    print("You have been noticing this strange light flickering on your dashboard for a while now, but you don't know what it means.")
-    print("Suddenly, the car sputters and rolls to a stop.")
-    print("You try to start the engine, but it won't turn over.")
-    print("As you think about what to do, you realize just how dark it is outside and how far you are from any help.")
+    typewriter_print(
+        "----------------------------------\n"
+        "Welcome to the Adventure Game!\n"
+        "----------------------------------\n"
+        "The forest road stretches endlessly ahead, swallowed by darkness.\n"
+        "You shouldn't have taken this shortcut.\n"
+        "That stranger at the gas station seemed so certain it would save you time.\n"
+        "But you've been driving for nearly an hour without seeing a single other car.\n"
+        "Just trees. Endless trees pressing close to the narrow road.\n"
+        "The sky above is caught in that strange twilight between day and night.\n"
+        "The last traces of sunset have faded, but the moon hasn't risen yet.\n"
+        "Not that it matters — you just need to get home.\n"
+        "A warning light suddenly flickers on the dashboard — you don't recognize the symbol.\n"
+        "Before you can check what it means, the engine coughs.\n"
+        "Once.\n"
+        "Twice.\n"
+        "Then it dies completely, and the car rolls to a silent stop.\n"
+        "You try the ignition. Nothing happens. Not even a click.\n"
+        "The headlights dim, then go dark.\n"
+        "Your phone — you grab it immediately, but your heart sinks.\n"
+        "No signal. And the battery is at 3%.\n"
+        "Of course. You forgot to charge it this morning.\n"
+        "You're on your own.\n"
+        "In the sudden silence, you become aware of how alone you are.\n"
+        "How far from anything.\n"
+        "How dark it is out here.\n"
+        "\nWill you try starting the car again or check the owner's manual in the glove box? (Type 'START' or 'MANUAL') "
+    )
 
     # First circle of decisions
-    decision_1 = input("Should you try again to start the car or seek help? (Type 'TRY' or 'HELP') ")
-    if decision_1.lower() == 'try':
-        print("----------------------------------")
-        print("As you turn the key, the engine coughs weakly and you hear a faint clicking sound under the hood.")
-        print("The dashboard light flickers again, just for a moment.")
-        decision_2 = input("Do you keep trying to start the car or get out and seek help? (Type 'TRY' or 'HELP') ")
-        if decision_2.lower() == 'try':
-            print("----------------------------------")
-            print("The engine stutters harder this time.")
-            print("Something rattles beneath the hood, like a loose piece of metal tapping against something.")
-            print("For a split second, you think you smell something... sharp? But it's gone before you can be sure.")
-            print("Something tells you that you should stop, but you are determined to get the car started.")
-            decision_3 = input("Will you try one last time or look for help? (Type 'TRY' or 'HELP') ")
+    decision_1 = input("")
+    if decision_1.lower() == 'start':
+        typewriter_print(
+            "----------------------------------\n"
+            "You turn the key firmly.\n"
+            "The engine makes a weak, grinding sound — like something trying and failing to catch.\n"
+            "A faint clicking starts somewhere under the dashboard.\n"
+            "Rhythmic. Mechanical. Almost like a countdown.\n"
+            "The warning light flickers weakly, then dies again.\n"
+            "You wait, listening to the clicking, trying to understand what it means.\n"
+            "Outside, the wind picks up, rustling through the branches.\n"
+            "The darkness is deepening. Soon it will be pitch black out here.\n"
+            "You glance through the windshield, peering into the treeline.\n"
+            "Far off, maybe thirty yards into the forest, something moves between the trees.\n"
+            "Just a shift in the shadows. Could be a deer.\n"
+            "Could be nothing.\n"
+            "You blink, and whatever it was has stopped moving.\n"
+            "The clicking under the dashboard continues its steady rhythm.\n"
+            "You need to figure this out before it gets any darker.\n"
+            "\nDo you try starting the car again or check under the dashboard for that clicking sound? (Type 'START' or 'DASHBOARD') "
+        )
+        decision_2 = input("")
+        if decision_2.lower() == 'start':
+            typewriter_print(
+                "----------------------------------\n"
+                "You grip the key and twist it hard, putting your weight behind it.\n"
+                "The engine shudders violently this time, metal grinding against metal somewhere deep inside.\n"
+                "The clicking under the dashboard accelerates — faster, more urgent.\n"
+                "A sharp smell cuts through the stale car air.\n"
+                "Burnt plastic. Hot metal. Something electrical overheating.\n"
+                "The warning light flares bright red for a split second, flooding the car interior with bloody light.\n"
+                "In that brief flash, you catch movement through the passenger window.\n"
+                "Closer now. In the bushes just off the road. Maybe ten feet away.\n"
+                "The light dies, plunging you back into darkness.\n"
+                "You hold your breath, straining to hear.\n"
+                "The bushes rustle. Something moving through them.\n"
+                "Not the wind. Too deliberate. Too low to the ground.\n"
+                "An animal, probably. A fox. Maybe a raccoon.\n"
+                "But the rustling moves along the side of the car. Following the length of it.\n"
+                "Your heart starts to beat faster.\n"
+                "The engine was *so close* to catching — you felt it shudder, trying to turn over.\n"
+                "If you could just force it... just one more push...\n"
+                "But that burning smell is getting stronger.\n"
+                "And whatever's in those bushes is getting closer to your door.\n"
+                "\nDo you try forcing the engine one more time or get out and look for help? (Type 'TRY' or 'HELP') "
+            )
+            decision_3 = input("")
             if decision_3.lower() == 'try':
-                print("----------------------------------")
-                print("As you try one more time, the dashboard light flares brightly, then dies completely.")
-                print("A violent sputter erupts from under the hood, followed by a sudden hiss.")
-                print("A strong metallic smell fills the air, and before you can react, the entire front of the car bursts into flames!")
-                print("You throw the door open and stumble out, barely escaping the heat.")
-                print("The only hope that you had of leaving the area is now gone.")
+                typewriter_print(
+                    "----------------------------------\n"
+                    "You can't go out there. Not with that thing so close.\n"
+                    "You just need the engine to start. Just once.\n"
+                    "You turn the key with everything you have.\n"
+                    "The engine screams — a tortured, mechanical shriek.\n"
+                    "The clicking becomes a frantic staccato. Smoke curls from the dashboard.\n"
+                    "**No no no**\n"
+                    "Outside, the rustling stops.\n"
+                    "Then you hear it step onto the gravel.\n"
+                    "Heavy. Deliberate. Paws, not hooves.\n"
+                    "Each footfall crunches with a weight that makes your stomach drop.\n"
+                    "It circles around the back of your car. Then up the passenger side.\n"
+                    "You track it by sound alone, barely breathing.\n"
+                    "It stops at your door.\n"
+                    "You hear breathing. Deep. Rhythmic. Right outside your window.\n"
+                    "So close the glass fogs with each exhale.\n"
+                    "Something scrapes against the door — claws testing the surface.\n"
+                    "A low rumble emanates from its chest. Not quite a growl. Something deeper.\n"
+                    "The warning light explodes into blinding brightness—\n"
+                    "Then everything goes black.\n"
+                    "A dull *whoomph* from under the hood.\n"
+                    "Orange light. Heat against your face.\n"
+                    "**Fire.**\n"
+                    "The creature bolts — crashing through underbrush, fleeing the flames.\n"
+                    "You throw yourself out as fire erupts across the engine.\n"
+                    "The heat chases you back. You stumble away, watching your only escape burn.\n"
+                    "The flames roar higher, casting wild shadows through the trees.\n"
+                    "Whatever it was, it fled from the fire.\n"
+                    "As you catch your breath, you notice something near your door.\n"
+                    "Deep gouges in the gravel. And pressed in the soft dirt: a print.\n"
+                    "Large. Canine. But far too big for any dog.\n"
+                    "Four toes. Claws extending at least an inch beyond the pads.\n"
+                    "You need shelter. Now.\n"
+                    "Through the smoke, you spot a faint glow in the distance on a hill.\n"
+                    "A house.\n"
+                    "It's your only chance.\n"
+                )
                 car_was_destroyed = True
-                print("Now stranded in the dark, you look around and spot a house on a hill with a faint light in the distance.")
             elif decision_3.lower() == 'help':
-                print("----------------------------------")
-                print("As you step out of the car, you notice a thin wisp of smoke seeping from under the hood.")
-                print("It fades quickly, and you feel relieved, it doesn't look like you damaged the engine.")
-                print("But a faint burned smell lingers in the air.")
-                print("You lean inside and realize the smell comes from beneath the dashboard.")
-                print("You check the fuse panel and see that one of the fuses has blown, though you don't know what it was for.")
-                print("Without a replacement, you won't be able to get the car started again.")
-                print("You step away from the vehicle and spot a narrow path leading to a house on a hill, a faint glow coming from one of its windows.")
+                typewriter_print(
+                    "----------------------------------\n"
+                    "Your hand freezes on the key.\n"
+                    "The smell. The clicking. That animal in the bushes.\n"
+                    "This is wrong. All of it.\n"
+                    "You need to get out — now — before the car fails completely.\n"
+                    "Before whatever's out there gets any closer.\n"
+                    "Your hand reaches back and grabs the first thing it finds on the rear seat.\n"
+                    "An umbrella. The heavy one with the wooden handle.\n"
+                    "It's not much, but it's better than nothing.\n"
+                    "You take a breath, steel yourself, and push the door open slowly.\n"
+                    "The dome light doesn't come on — the electrical system is dying.\n"
+                    "Good. You don't want to be visible.\n"
+                    "As you step onto the gravel, you freeze.\n"
+                    "You hear it clearly now.\n"
+                    "Sniffing. Deep, deliberate breaths. Right behind your car.\n"
+                    "Whatever it is, it's large. You can hear the weight of it shifting on the gravel.\n"
+                    "The sniffing moves along the back bumper, then down the passenger side.\n"
+                    "It's tracking your scent.\n"
+                    "You can't see it — it's too dark, and it's staying low.\n"
+                    "But it's there. Right there.\n"
+                    "Your fingers tighten on the umbrella handle.\n"
+                    "Slowly, carefully, you edge around to the front of the car.\n"
+                    "You pop the hood as quietly as possible — it hisses softly as it opens, releasing a thin wisp of smoke.\n"
+                    "The engine looks intact, but there's a scorch mark near the battery.\n"
+                    "Close. Too close to a fire.\n"
+                    "The sniffing has stopped.\n"
+                    "Silence.\n"
+                    "That's somehow worse.\n"
+                    "You crouch by the driver's door and find the fuse panel under the dashboard.\n"
+                    "Your hands shake as you check it.\n"
+                    "One fuse has blown completely — glass blackened, metal melted.\n"
+                    "The fuel pump fuse.\n"
+                    "If you'd kept forcing the ignition, it would have caught fire.\n"
+                    "Without a replacement, the car is dead.\n"
+                    "A twig snaps somewhere behind you.\n"
+                    "You don't turn around. You don't want to know how close it is.\n"
+                    "You just start walking.\n"
+                    "Fast.\n"
+                    "Ahead, through the trees, you spot a narrow path leading uphill.\n"
+                    "At the top, barely visible, a light glows through the branches.\n"
+                    "A house.\n"
+                    "You grip the umbrella tighter and head toward it, forcing yourself not to run.\n"
+                    "Not yet.\n"
+                )
+                got_umbrella = True
             else:
                 invalid_choice()
-        elif decision_2.lower() == 'help':
-            print("----------------------------------")
-            print("A faint burned smell drifts from beneath the dashboard.")
-            print("You check the fuse box and notice that one of the fuses has blown. You will need a new one, if you want the car to move again.")
-            print("You step out of the car to look for help.")
-            print("Just ahead, you notice a path leading toward a house on a hill.")
+        elif decision_2.lower() == 'dashboard':
+            typewriter_print(
+                "----------------------------------\n"
+                "You lean down, pressing your ear close to the dashboard.\n"
+                "The clicking is rhythmic, mechanical — like a relay switch stuck in a loop.\n"
+                "Definitely electrical, not the engine itself.\n"
+                "That's... something, at least. You can work with electrical.\n"
+                "The sky outside is getting darker. The last traces of twilight are fading fast.\n"
+                "You need to work quickly.\n"
+                "You feel around under the dashboard for the fuse panel, squinting in the dim light.\n"
+                "The plastic cover pops off easily, revealing rows of colored fuses.\n"
+                "As you examine them, you hear rustling outside.\n"
+                "In the bushes. Closer than before — maybe eight or ten feet from the passenger side.\n"
+                "You freeze, listening.\n"
+                "Something's moving through the undergrowth. Low to the ground.\n"
+                "The rustling stops. Then starts again, moving parallel to the car.\n"
+                "An animal. Has to be.\n"
+                "Probably foraging. Maybe curious about the car.\n"
+                "You turn your attention back to the fuses.\n"
+                "There — one of them has blown. Blackened glass, melted connector.\n"
+                "The fuel pump fuse.\n"
+                "That explains everything. The clicking was the relay trying to activate a dead circuit.\n"
+                "If you'd kept forcing the ignition, you might have caused a short circuit. Maybe worse.\n"
+                "But without a replacement, the car won't start.\n"
+                "Outside, the rustling has moved to the bushes behind the car.\n"
+                "Closer. More deliberate.\n"
+                "You need to move.\n"
+                "As carefully as possible, you ease the door open and slip out.\n"
+                "Ahead, through the trees, you see a faint light on a hillside.\n"
+                "A house. Someone who can help.\n"
+                "You start walking, glancing back at the bushes.\n"
+                "Whatever was there has gone quiet.\n"
+                "That doesn't make you feel better.\n"
+            )
         else:
             invalid_choice()
-    elif decision_1.lower() == 'help':
-        print("----------------------------------")
-        print("You reach for the glove box and open the owner's manual, trying to identify the flickering dashboard light.")
-        print("The manual suggests that a fuse may have failed, which would explain the engine trouble.")
-        print("You open the fuse panel and find that one of the fuses is indeed blown.")
-        print("It's the fuel pump fuse, exactly why the engine refused to start.")
-        print("If you had kept trying to turn the key, it might have caused more damage... possibly even a fire.")
-        print("In the distance, you notice a house on a hill and decide to head there for help.")
+    elif decision_1.lower() == 'manual':
+        typewriter_print(
+            "----------------------------------\n"
+            "You pop open the glove box and grab the owner's manual.\n"
+            "The pages feel stiff — you've never needed this before.\n"
+            "You flip to the index, searching for warning lights.\n"
+            "There: 'Warning Lights and Indicators'\n"
+            "You scan down until you find the symbol.\n"
+            "'Fuel System Malfunction — Check Fuse Panel Immediately. Do Not Attempt Restart.'\n"
+            "A diagram shows the fuse panel location under the dashboard.\n"
+            "You set the manual aside and feel for the panel in the growing darkness.\n"
+            "The twilight is fading fast. Soon it will be completely dark.\n"
+            "The panel clicks open, and you lean down to examine the fuses.\n"
+            "One has clearly blown — glass blackened, connector melted.\n"
+            "The fuel pump fuse.\n"
+            "The manual's warning was serious: 'Attempting to start engine with this fuse blown may cause electrical fire.'\n"
+            "You made the right call.\n"
+            "But you're still stranded.\n"
+            "As you sit back, you glance through the windshield.\n"
+            "Far off in the forest, maybe thirty or forty yards out, you notice movement.\n"
+            "Just a shifting shadow between the trees.\n"
+            "Could be anything. A deer. The wind.\n"
+            "It's too dark to make out clearly.\n"
+            "Whatever it is, it's not your immediate problem.\n"
+            "You need to find help.\n"
+            "You step out carefully, scanning the area.\n"
+            "Through the branches ahead, you spot a faint glow on a hillside.\n"
+            "A house. Lights in the windows.\n"
+            "That's where you need to go.\n"
+            "You start toward it, walking steadily.\n"
+            "Behind you, something moves through the forest.\n"
+            "Distant. Following.\n"
+            "You keep walking.\n"
+        )
     else:
         invalid_choice()
 
-    print("----------------------------------")
-
     # Second circle of decisions
-    print("As you walk up the hill, the wind howls around you.")
-    print("You hear an eerie creaking sound to your left, near the trees.")
-    decision_4 = input("Do you want to investigate the sound or continue to the house? (Type 'INVESTIGATE' or 'HOUSE') ")
+    typewriter_print(
+        "----------------------------------\n"
+        "As you start up the hill toward the house, the first rays of moonlight break over the horizon.\n"
+        "The moon rises full and bright, casting long silver shadows through the trees.\n"
+        "The wind picks up, howling through the branches.\n"
+        "You pull your jacket tighter and keep moving.\n"
+        "Then you hear it — a sound from the woods to your left.\n"
+        "Not an animal sound.\n"
+        "Someone gasping. Struggling for breath.\n"
+        "It sounds like... pain. Raw, desperate pain.\n"
+        "A choked cry cuts through the wind, almost human.\n"
+        "Then a wet, cracking sound.\n"
+        "Another gasp — this one deeper, more guttural.\n"
+        "Someone's hurt.\n"
+        "\nSomeone might need help. Do you investigate or continue to the house? (Type 'INVESTIGATE' or 'HOUSE') "
+    )
+    decision_4 = input("")
     if decision_4.lower() == 'investigate':
-        print("----------------------------------")
-        print("You walk toward the trees and hear a muffled movement shifting in the shadows.")
-        print("You can't shake the feeling that something is watching you from the deep darkness.")
-        decision_5 = input("Do you want to keep investigating or head back to the house? (Type 'INVESTIGATE' or 'HOUSE') ")
-        if decision_5.lower() == 'investigate':
-            print("----------------------------------")
-            print("As you step closer, an owl suddenly swoops past your head, startling you.")
-            print("Something slips deeper into the woods, but the path ahead grows darker and far more unsettling.")
-            print("A cold breeze crawls up your spine. You realize you might be in danger.")
-            decision_6 = input("Do you want to continue investigating or return to the house? (Type 'INVESTIGATE' or 'HOUSE') ")
-            if decision_6.lower() == 'investigate':
-                print("----------------------------------")
-                print("A pair of glowing eyes appears between the trees, staring directly at you.")
-                print("Your heart pounds as you realize this is no ordinary animal. Its low growl sends shivers down your spine.")
-                print("As you slowly back away, your eyes locked with the beast's, you step in something.")
-                print("You glance down and see a long, curved tooth scratched with faint markings.")
-                print("It is wrapped in a thin strip of leather, fallen between the leaves.")
-                decision_7 = input("Do you pick it up or leave it? (Type 'PICK' or 'LEAVE') ")
+        typewriter_print(
+            "----------------------------------\n"
+            "You turn toward the trees, moving carefully down the slope.\n"
+            "The sounds are coming from somewhere in the dense undergrowth.\n"
+            "Another gasp — wet, labored, like someone drowning in their own breath.\n"
+            "Then a low moan that makes your skin crawl.\n"
+            "It starts human but trails off into something else.\n"
+            "\"Hello?\" you call out. \"Are you hurt? Do you need help?\"\n"
+            "The sounds stop abruptly.\n"
+            "Complete silence.\n"
+            "The moonlight filters through the branches, casting everything in sharp silver and shadow.\n"
+            "You hear movement now — something shifting in the darkness.\n"
+            "Heavy. Uneven. Like someone crawling.\n"
+            "Then that wet cracking sound again. Louder. More violent.\n"
+            "A strangled whimper that could be pain... or something else.\n"
+            "You can't see anything yet. Just the shifting shadows between the trees.\n"
+            "But something tells you this isn't right.\n"
+            "\nThe sounds have stopped. Do you keep searching or head back? (Type 'SEARCH' or 'BACK') "
+        )
+        decision_5 = input("")
+        if decision_5.lower() == 'search':
+            typewriter_print(
+                "----------------------------------\n"
+                "You push forward, stepping over roots and through tangled brush.\n"
+                "You need to know. Someone might be dying out here.\n"
+                "Then you see it.\n"
+                "Fabric. A torn piece of cloth snagged on a low branch.\n"
+                "Dark. Could be a shirt. Or a jacket.\n"
+                "You touch it — still warm.\n"
+                "A few steps further, another piece. Larger this time. Shredded.\n"
+                "Not cut. Torn.\n"
+                "Like someone ripped their clothes off in a frenzy.\n"
+                "Your pulse quickens.\n"
+                "More pieces litter the ground now. A trail of them.\n"
+                "Buttons. Scraps of fabric. A shoe, overturned in the dirt.\n"
+                "The moonlight filters through the branches, making everything look silver and strange.\n"
+                "As you round a thick cluster of trees, an owl suddenly explodes from above.\n"
+                "You cry out, stumbling backward, heart hammering.\n"
+                "The owl's shriek echoes through the forest, then fades.\n"
+                "In the silence that follows, you hear it again.\n"
+                "Breathing. But wrong.\n"
+                "Too deep. Too wet. Each exhale a rattling growl.\n"
+                "The cracking sounds have stopped. Whatever was happening... it's finished.\n"
+                "The clothing trail ends here. Just... stops.\n"
+                "But something else is ahead.\n"
+                "Moving. Not crawling anymore. Not struggling.\n"
+                "Moving with purpose.\n"
+                "You feel it before you see it — the weight of its attention.\n"
+                "A cold breeze cuts through the trees, carrying a smell.\n"
+                "Something strangely familiar.\n"
+                "\nEvery instinct screams danger. Do you continue or run? (Type 'CONTINUE' or 'RUN') "
+            )
+            decision_6 = input("")
+            if decision_6.lower() == 'continue':
+                typewriter_print(
+                    "----------------------------------\n"
+                    "You take one more step forward, pushing aside a low branch.\n"
+                    "That's when you see them.\n"
+                    "Eyes. Glowing in the moonlight.\n"
+                    "Yellow-green, bright as lanterns, staring directly at you.\n"
+                    "They're low to the ground. Wide set. Unblinking.\n"
+                    "Your breath catches in your throat.\n"
+                    "The shape around those eyes begins to resolve in the shadows.\n"
+                    "Massive. Far larger than any wolf should be.\n"
+                    "Its shoulders are level with your chest, even on all fours.\n"
+                    "The moonlight catches its fur — dark, bristling, almost black.\n"
+                    "Its lips pull back slowly, deliberately.\n"
+                    "Teeth. So many teeth. Each one as long as your thumb.\n"
+                    "A low growl builds in its chest — not the sound you heard before.\n"
+                    "This is pure, predatory threat.\n"
+                    "This is no injured person. This was never a person.\n"
+                )
+                if got_umbrella:
+                    typewriter_print(
+                        "Your hand tightens on the umbrella.\n"
+                        "You raise it instinctively, putting it between you and the creature.\n"
+                        "The beast's eyes track the movement.\n"
+                        "Its growl intensifies, and you realize how utterly inadequate this is.\n"
+                        "An umbrella. Against that.\n"
+                    )
+                
+                typewriter_print(
+                    "As you slowly back away, your foot catches on something.\n"
+                    "You glance down for just a split second.\n"
+                    "There, half-buried in the leaves: a long, curved tooth.\n"
+                    "Old. Yellowed. Scratched with faint markings you can't read.\n"
+                    "A thin strip of leather is wrapped around its base.\n"
+                    "Your eyes snap back to the creature. It hasn't moved.\n"
+                    "But its muscles are coiled. Waiting.\n"
+                    "\nDo you pick up the tooth or leave it? (Type 'PICK' or 'LEAVE') "
+                )
+                
+                decision_7 = input("")
                 if decision_7.lower() == 'pick':
-                    print("----------------------------------")
-                    print("You quickly pocket the tooth, without losing sight of the creature in the shadows.")
+                    typewriter_print(
+                        "----------------------------------\n"
+                        "You snatch the tooth and shove it into your pocket.\n"
+                        "Your eyes never leave the creature.\n"
+                        "Its growl deepens. It doesn't like that you took it.\n"
+                        "You back away slowly, one step at a time.\n"
+                        "The beast shifts its weight forward.\n"
+                    )
                     amulet_found = True
-                    print("You have no time to think about what it could be now.")
-                    print("You slowly start to back away, hoping that the dark figure won't follow you.")
-                    print("The beast's growl intensifies, and it starts to move slowly towards you.")
                 elif decision_7.lower() == 'leave':
-                    print("----------------------------------")
-                    print("You decide to leave the tooth behind and focus on escaping.")
-                    print("Whatever it was, surviving is your only priority now.")
-                    print("As you step back without taking your eyes off the creature, it moves menacingly in the shadows.")
+                    typewriter_print(
+                        "----------------------------------\n"
+                        "You step carefully over the tooth, not daring to look away.\n"
+                        "Survival. That's all that matters.\n"
+                        "You back away slowly, one step at a time.\n"
+                        "The beast's eyes follow your every movement.\n"
+                    )
                 else:
                     invalid_choice()
-                print("Suddenly, it lunges at you, and you run for dear life!")
-                print("You sprint with every ounce of strength and dive inside the house.")
-                print("But your speed is not enough. Its jaws clamp around your left leg as you fight to shut the door.")
-                print("You kick the animal, finally slamming the door behind you.")
-                print("The animal hurls itself at the door, but somehow it holds. Eventually it seems to give up.")
-                print("As you stumble forward, a sharp pain explodes in your leg and you feel dizzy.")
-                print("You look down and see blood running down your leg. Only then do you realize how deep the wound is.")
+                
+                typewriter_print(
+                    "Then it happens.\n"
+                    "The creature lunges.\n"
+                    "Impossibly fast. A blur of fur and teeth.\n"
+                )
+                
+                if got_umbrella:
+                    typewriter_print(
+                        "You swing the umbrella wildly as you turn to run.\n"
+                        "It flies from your hands, clattering uselessly against the trees.\n"
+                    )
+                
+                typewriter_print(
+                    "You run.\n"
+                    "Every ounce of strength, every bit of will, focused on reaching that house.\n"
+                    "You burst from the trees, sprinting up the hill.\n"
+                    "The door — you can see it — just ahead—\n"
+                    "You hit the porch at full speed and throw yourself at the door.\n"
+                    "It gives way and you crash inside.\n"
+                    "Behind you, the creature is right there—\n"
+                    "Its jaws snap shut around your left leg.\n"
+                    "Teeth sink deep into muscle.\n"
+                    "You scream and kick with your other leg, catching it square in the muzzle.\n"
+                    "It releases for just a moment — enough.\n"
+                    "You throw your weight against the door.\n"
+                    "It slams shut just as the creature lunges again.\n"
+                    "The door shudders. Once. Twice. Three times.\n"
+                    "Then... silence.\n"
+                    "You collapse against the wall, gasping.\n"
+                    "Your leg is on fire. Blood soaks through your pants.\n"
+                    "When you look down, you see it clearly:\n"
+                    "Deep puncture wounds. Four on top. Four on bottom.\n"
+                    "Perfectly symmetrical. Impossibly large.\n"
+                )
                 injured_by_wolf = True
+                
                 if car_was_destroyed:
-                    print("You use your shirt as a makeshift tourniquet, trying desperately to stem the bleeding.")
-                    print("Your situation is now dire without the car.")
-                    print("You need to find help quickly if you want to survive.")
+                    typewriter_print(
+                        "----------------------------------\n"
+                        "You tear off your shirt with shaking hands, wrapping it around your leg.\n"
+                        "The fabric soaks through immediately. Dark. Too dark.\n"
+                        "You pull it tighter, gasping at the pain, but the bleeding won't stop.\n"
+                        "Your vision blurs at the edges. The room tilts.\n"
+                        "The car is gone. Burned. There's no escape.\n"
+                        "You're trapped in this house with a monster outside and a wound that might kill you before it does.\n"
+                        "You need help. Real help. Medicine. Something.\n"
+                        "Or you're going to die here.\n"
+                    )
                 else:
-                    print("You rip off your shirt and tie it around your leg, trying to stop the bleeding.")
-                    print("If you can get the car running again, you might still make it to a hospital.")
-                    print("But first, you need to treat the wound before you lose too much blood.")
-                    print("Maybe there's something in the house that can help.")
-            elif decision_6.lower() == 'house':
-                print("----------------------------------")
-                print("Your instincts scream for you to run, and you sprint back toward the house.")
-                print("You throw yourself inside and slam the door shut behind you.")
-                print("You can hear something moving outside, sniffing around the door, but at least you're safe for now.")
+                    typewriter_print(
+                        "----------------------------------\n"
+                        "You rip off your shirt and bind it around your leg, pulling the knot tight.\n"
+                        "The pain is blinding. White-hot. You taste copper in your mouth.\n"
+                        "Blood seeps through the makeshift bandage, dripping onto the floor.\n"
+                        "The car. If you can get back to the car, find that fuse, get it running...\n"
+                        "A hospital. Antibiotics. Stitches.\n"
+                        "But that means going back outside. Back where that thing is.\n"
+                        "And right now, you can barely stand.\n"
+                        "You need to stop the bleeding first. Find something in this house.\n"
+                        "Anything.\n"
+                        "Before you lose too much blood to make it back.\n"
+                    )
+            elif decision_6.lower() == 'run':
+                typewriter_print(
+                    "----------------------------------\n"
+                    "No. This is wrong. All of it.\n"
+                    "You turn and run back toward the house.\n"
+                    "Behind you, something crashes through the undergrowth.\n"
+                    "Fast. Getting closer.\n"
+                    "You don't look back.\n"
+                    "You hit the porch and throw yourself through the door, slamming it shut.\n"
+                    "Something heavy slams against it from the outside.\n"
+                    "Then another hit. And another.\n"
+                    "You hear sniffing along the bottom of the door.\n"
+                    "Heavy breathing. A low growl.\n"
+                    "Then... silence.\n"
+                    "You stand there, trembling, waiting.\n"
+                    "Whatever it was, it's gone.\n"
+                    "For now.\n"
+                )
             else:
                 invalid_choice()
-        elif decision_5.lower() == 'house':
-            print("----------------------------------")
-            print("You decide it's too risky and head straight for the house.")
-            print("You can almost feel eyes on your back as you climb the hill, but you refuse to look back.")
-            print("You reach the house and rush inside, slamming the door behind you.")
-            print("You are safe, but you can't shake the feeling that something is out there.")
+        elif decision_5.lower() == 'back':
+            typewriter_print(
+                "----------------------------------\n"
+                "This doesn't feel right. Those sounds...\n"
+                "You turn back toward the house and walk quickly up the hill.\n"
+                "Behind you, the sounds stop abruptly.\n"
+                "You can feel something watching you. Tracking your movement.\n"
+                "You don't run. Running triggers chase.\n"
+                "But you walk fast. Very fast.\n"
+                "When you reach the house, you slip inside and lock the door.\n"
+                "Safe.\n"
+                "But you can't shake the feeling that something is out there.\n"
+                "Waiting.\n"
+            )
         else:
             invalid_choice()
     elif decision_4.lower() == 'house':
-        print("----------------------------------")
-        print("You turn away from the woods, but the feeling of being watched lingers.")
-        print("Uneasy, you hurry up the hill toward the house.")
-        print("When you reach the door, you find it slightly ajar.")
-        print("You push it open slowly and step inside, quickly locking it behind you.")
-        print("If there was something out there, at least you are safe for now.")
+        typewriter_print(
+            "----------------------------------\n"
+            "The sounds unsettle you, but the house is right there.\n"
+            "Warm light in the windows. Shelter.\n"
+            "You turn away from the woods and hurry up the hill.\n"
+            "The feeling of being watched follows you all the way to the door.\n"
+            "When you reach it, you find it slightly ajar.\n"
+            "You push it open and step inside quickly, locking it behind you.\n"
+            "If something was out there, at least you're safe now.\n"
+            "At least, you hope you are.\n"
+        )
     else:
         invalid_choice()
 
-    print("----------------------------------")
-    print("As your eyes adjust to the light inside, you find a cozy living room with a fireplace.")
+    typewriter_print(
+        "----------------------------------\n"
+        "As your eyes adjust to the dim light, you find yourself in a small living room.\n"
+        "A fireplace crackles softly in the corner, casting dancing shadows across the walls.\n"
+        "The room is cozy, almost too cozy — like someone was just here moments ago.\n"
+        "A cup of tea sits on the side table, still steaming.\n"
+        "But there's no one here.\n"
+    )
 
     # Branching consequences of injured_by_wolf
     if injured_by_wolf:
-        print("But as you try to walk, the pain intensifies, and you feel dizzy.")
-        print("You should look around for something to treat your injury quickly as you are losing blood.")
-        print("As you scan the room, you notice a bookshelf and a TV cabinet on different corners.")
-        decision_8 = input("Do you want to search the bookshelf or the TV cabinet? (Type 'BOOKSHELF' or 'TVCABINET') ")
+        typewriter_print(
+            "----------------------------------\n"
+            "You try to take a step forward, but your leg buckles.\n"
+            "The pain explodes through you, sharp and blinding.\n"
+            "You grab the doorframe to steady yourself, leaving a bloody handprint.\n"
+            "When you look down, your makeshift bandage is completely soaked through.\n"
+            "Dark red pools on the hardwood floor.\n"
+            "Your vision swims. The room tilts.\n"
+            "You need to find something — now — or you're going to pass out.\n"
+            "Through the haze, you make out two options:\n"
+            "A tall bookshelf against the far wall, packed with old volumes.\n"
+            "And a TV cabinet near the fireplace, drawers slightly ajar.\n"
+            "\nWhich do you search first — the bookshelf or the TV cabinet? (Type 'BOOKSHELF' or 'CABINET') "
+        )
+        decision_8 = input("")
         if decision_8.lower() == 'bookshelf':
-            print("----------------------------------")
-            print("As you search the bookshelf, you find nothing useful for your injury.")
-            print("The only thing you notice is an old dusty book about werewolves and a diary.")
-            decision_9 = input("Do you want to read the diary or the book about werewolves? (Type 'DIARY' or 'BOOK') ")
-            if decision_9.lower() == 'diary':
-                print("----------------------------------")
+            typewriter_print(
+                "----------------------------------\n"
+                "You limp to the bookshelf, using furniture for support.\n"
+                "Each step leaves a red smear on the floor.\n"
+                "The shelves are crammed with books — old, leather-bound, spine text faded.\n"
+                "You run your fingers across them desperately, looking for anything medical.\n"
+                "'Folk Remedies of the Northern Tribes'\n"
+                "'Medicinal Herbs and Their Applications'\n"
+                "'The Lunar Cycle and Its Effects'\n"
+                "None of these will help you now.\n"
+                "Then, on the middle shelf, two items catch your eye.\n"
+                "A thick book, its cover decorated with a carved wolf's head. The title reads: 'Lycanthropy: Curse and Cure'\n"
+                "And beside it, a leather journal, worn and stained, held shut with a leather cord.\n"
+                "Your vision blurs again. You steady yourself against the shelf.\n"
+                "You can only grab one before you collapse.\n"
+                "\nDo you take the journal or the book about lycanthropy? (Type 'JOURNAL' or 'BOOK') "
+            )
+            decision_9 = input("")
+            if decision_9.lower() == 'journal':
                 if amulet_found:
-                    print("This seems to be the diary of the owner of the house.")
-                    print("Instead of letters you see only strange markings that, somehow, make sense to you.")
-                    print("But you don't have time to read it now. You need to treat your wound desperately.")
-                    print("You pocket the diary with the amulet and look around for something to help you.")
-                    print("You notice a poker on the fireplace with some hot coals nearby.")
-                    print("You know that heat can help to cauterize wounds and stop bleeding.")
-                    print("You carefully use it to grab a hot coal and press it against your wound.")
-                    print("The intense heat causes you to grit your teeth in intense pain.")
-                    print("Suddenly, you lose consciousness and collapse to the floor.")
-                    print("When you wake up, you feel weak but the bleeding has stopped.")
+                    typewriter_print(
+                        "----------------------------------\n"
+                        "You grab the journal and stumble back toward the fireplace.\n"
+                        "Your fingers fumble with the leather cord, finally pulling it loose.\n"
+                        "The pages fall open.\n"
+                        "But there are no words. No letters.\n"
+                        "Just... symbols. Strange, angular markings scratched into the yellowed paper.\n"
+                        "They shouldn't make sense.\n"
+                        "But they do.\n"
+                        "The moment your eyes focus on them, understanding floods your mind.\n"
+                        "You reach into your pocket, touching the carved tooth you found.\n"
+                        "It's warm. Almost hot.\n"
+                        "The symbols in the journal pulse with the same warmth.\n"
+                        "They're connected.\n"
+                        "But you can't focus on this now. The bleeding—\n"
+                        "Your vision darkens at the edges.\n"
+                        "You look around desperately and spot the fireplace.\n"
+                        "Hot coals glow orange in the grate. A fire poker rests beside it.\n"
+                        "You know what you have to do.\n"
+                        "Cauterization. Brutal. Primitive. But it will stop the bleeding.\n"
+                        "You shove the journal into your pocket with the tooth.\n"
+                        "Your hand shakes as you grab the poker and lift a glowing coal.\n"
+                        "**This is going to hurt.**\n"
+                        "You press it against the wound.\n"
+                        "The pain is—\n"
+                        "White.\n"
+                        "Searing.\n"
+                        "Absolute.\n"
+                        "You hear yourself screaming, but it sounds distant, like someone else.\n"
+                        "The smell of burning flesh fills your nostrils.\n"
+                        "The room spins.\n"
+                        "Then nothing.\n"
+                        "\n"
+                        "...\n"
+                        "\n"
+                        "You wake to darkness.\n"
+                        "How long were you out? Minutes? Hours?\n"
+                        "Your leg throbs with a dull, deep ache, but the sharp agony is gone.\n"
+                        "You touch the wound carefully — the bleeding has stopped.\n"
+                        "Seared flesh. Crude. But effective.\n"
+                        "The journal is still in your pocket. The tooth too.\n"
+                        "Both warm against your skin.\n"
+                        "As you pull yourself up, you hear something from the kitchen.\n"
+                        "Movement. Deliberate.\n"
+                        "You're not alone in this house.\n"
+                    )
                     leg_was_treated = True
                     coal_used = True
-                    print("As you regain your strength, you hear a strange noise coming from the kitchen.")
                 else:
-                    print("As you try to read the diary, you feel a sharp pain in your leg.")
-                    print("The words on the page seem like gibberish and start to blur as your vision fades.")
-                    print("You drop the diary and collapse to the floor.")
-                    print("After some time, you wake up feeling weak. It seems you fainted from blood loss.")
-                    print("When you finally come to your senses, you hear some noise coming from the kitchen.")
+                    typewriter_print(
+                        "----------------------------------\n"
+                        "You grab the journal and try to open it, but the symbols on the first page...\n"
+                        "They're meaningless. Alien. They swim before your eyes like insects.\n"
+                        "You try to focus, but the pain in your leg spikes.\n"
+                        "Your vision tunnels.\n"
+                        "The journal slips from your hands.\n"
+                        "You reach for the shelf to steady yourself, but your fingers find only air.\n"
+                        "The floor rushes up to meet you.\n"
+                        "\n"
+                        "...\n"
+                        "\n"
+                        "You wake slowly, consciousness returning in pieces.\n"
+                        "You're lying on the floor beside the bookshelf.\n"
+                        "A pool of blood has spread beneath your leg.\n"
+                        "Too much blood.\n"
+                        "Your head pounds. Your mouth is dry.\n"
+                        "How long were you out?\n"
+                        "The wound hasn't been treated. The bleeding has slowed, but only because you have less blood to lose.\n"
+                        "You feel weak. Hollow.\n"
+                        "As you struggle to sit up, you hear a sound from the kitchen.\n"
+                        "Something moving. Sniffing.\n"
+                        "It got inside.\n"
+                    )
             elif decision_9.lower() == 'book':
-                print("----------------------------------")
-                print("You open the book and find a recipe for a healing salve.")
-                print("The ingredients are neatly tied inside the book, as if someone knew you would need them.")
-                print("You prepare and apply the salve to your wound, and although it doesn't completely heal it, it eases the pain significantly.")
-                print("You notice that the bleeding has stopped, and you feel a bit more stable now.")
+                typewriter_print(
+                    "----------------------------------\n"
+                    "You grab the heavy book and collapse into a nearby chair.\n"
+                    "Your hands shake as you flip through the pages.\n"
+                    "'Lycanthropy: A Historical Account'\n"
+                    "'Symptoms and Transformation Cycles'\n"
+                    "'Methods of Containment'\n"
+                    "None of this helps you now—\n"
+                    "Wait.\n"
+                    "A loose page falls from the center of the book.\n"
+                    "Hand-written. Different from the printed text.\n"
+                    "'Emergency Treatment for Lycanthropic Wounds'\n"
+                    "A recipe. Ingredients listed in careful script.\n"
+                    "Your heart pounds. This is exactly what you need.\n"
+                    "But the ingredients — where would you even—\n"
+                    "Something falls from between the pages.\n"
+                    "A small cloth bundle, tied with twine.\n"
+                    "You unwrap it with trembling fingers.\n"
+                    "**Every ingredient from the recipe. Dried. Preserved. Ready.**\n"
+                    "Someone left this here.\n"
+                    "Someone knew.\n"
+                    "You don't have time to question it.\n"
+                    "Using a mortar and pestle from the mantle, you grind the herbs according to the instructions.\n"
+                    "The mixture turns into a thick, dark paste that smells of pine and something else. Something earthy and old.\n"
+                    "You tear away your blood-soaked bandage and apply the salve directly to the wound.\n"
+                    "It burns at first — a different burn than fire, colder somehow.\n"
+                    "Then... relief.\n"
+                    "Not complete. The wound still aches. Still throbs.\n"
+                    "But the bleeding stops. The pain dulls to something manageable.\n"
+                    "You can feel the salve working, pulling the torn flesh together.\n"
+                    "You lean back, exhausted, and notice a notation at the bottom of the recipe:\n"
+                    "'This will halt the transformation, but not reverse it. The curse remains dormant. Use with caution.'\n"
+                    "Transformation?\n"
+                    "Curse?\n"
+                    "What does that—\n"
+                    "A noise from the kitchen interrupts your thoughts.\n"
+                    "Something's in there.\n"
+                )
                 leg_was_treated = True
                 salve_used = True
-                print("As you feel better, you hear a noise coming from the kitchen.")
             else:
                 invalid_choice()
-        elif decision_8.lower() == 'tvcabinet':
-            print("----------------------------------")
-            print("You search the TV cabinet and find only old magazines and a remote control.")
-            print("You hear a faint sound coming from the kitchen, it could be the wind, or maybe it's just your imagination.")
-            decision_10 = input("Do you want to keep searching the cabinet or investigate the kitchen? (Type 'SEARCH' or 'KITCHEN') ")
+        elif decision_8.lower() == 'cabinet':
+            typewriter_print(
+                "----------------------------------\n"
+                "You lurch toward the TV cabinet, gripping the furniture as you go.\n"
+                "Your leg drags behind you, leaving a crimson trail.\n"
+                "You yank open the first drawer.\n"
+                "Old magazines. TV guides from years ago. A remote with dead batteries.\n"
+                "Nothing useful.\n"
+                "Your breathing is ragged. The room feels too hot.\n"
+                "From somewhere else in the house — the kitchen, maybe — you hear a sound.\n"
+                "Faint. Could be the wind rattling a door.\n"
+                "Or a door being opened.\n"
+                "\nDo you want to keep searching the cabinet or investigate the kitchen? (Type 'SEARCH' or 'KITCHEN') "
+            )
+            decision_10 = input("")
             if decision_10.lower() == 'search':
-                print("----------------------------------")
-                print("As you open a second drawer, you find an old first aid kit hidden under the magazines!")
-                print("You quickly use it to clean and bandage your wound.")
-                print("The bandage and salves helps to stop the bleeding, but the pain is still there.")
+                typewriter_print(
+                    "----------------------------------\n"
+                    "You wrench open the second drawer, sending magazines scattering across the floor.\n"
+                    "And there — wedged in the back — a white plastic box with a red cross.\n"
+                    "'First aid kit'.\n"
+                    "Your hands shake as you pull it out and snap it open.\n"
+                    "Gauze. Antiseptic. Medical tape. Actual supplies.\n"
+                    "You work quickly, tearing open packets with your teeth.\n"
+                    "The antiseptic burns as you pour it over the wound, and you bite back a scream.\n"
+                    "You pack the punctures with gauze, wrapping them tightly with medical tape.\n"
+                    "It's not pretty. It's not professional.\n"
+                    "But the bleeding slows. Then stops.\n"
+                    "You lean back against the cabinet, breathing hard.\n"
+                    "The pain is still there — deep, throbbing — but manageable.\n"
+                    "This won't heal on its own, though. Those punctures are deep.\n"
+                    "You need a hospital. Antibiotics. Proper stitches.\n"
+                    "Infection is going to be a problem if you don't get real medical help soon.\n"
+                    "But for now, you're stable.\n"
+                    "As you catch your breath, the sound from the kitchen comes again.\n"
+                    "Closer this time.\n"
+                    "Deliberate.\n"
+                )
                 leg_was_treated = True
                 first_aid_used = True
-                print("You realize that you need to get to a hospital if you want to heal completely.")
-                print("As you rest for a moment, you hear a noise coming from the kitchen.")
             elif decision_10.lower() == 'kitchen':
-                print("----------------------------------")
-                print("The pain suddenly intensifies and your vision blurs.")
-                print("You collapse on the sofa for a moment, trying to steady yourself.")
-                print("After a while, you regain your composure, but you know you need medical help soon.")
-                print("When your consciousness returns, you notice a noise coming from the kitchen.")
+                typewriter_print(
+                    "----------------------------------\n"
+                    "The sound comes again — louder.\n"
+                    "Definitely from the kitchen.\n"
+                    "You abandon the search and push yourself upright.\n"
+                    "Big mistake.\n"
+                    "The moment you put weight on your injured leg, the pain detonates.\n"
+                    "Your vision goes white. Your knees buckle.\n"
+                    "You collapse onto the sofa, gasping, clutching your leg.\n"
+                    "The wound has opened wider. Blood flows freely again.\n"
+                    "Your head swims. The ceiling spins above you.\n"
+                    "You try to focus, but consciousness keeps slipping away.\n"
+                    "Somewhere in the distance, you hear the kitchen sound again.\n"
+                    "Closer.\n"
+                    "You need to get up. Need to move.\n"
+                    "But your body won't respond.\n"
+                    "\n"
+                    "...\n"
+                    "\n"
+                    "When you open your eyes, you don't know how much time has passed.\n"
+                    "Seconds? Minutes?\n"
+                    "The bleeding has slowed, but only because there's less blood left to lose.\n"
+                    "Your lips are dry. Your skin is cold.\n"
+                    "Shock, probably.\n"
+                    "The wound is still open. Still dangerous.\n"
+                    "And the sound from the kitchen has stopped.\n"
+                    "That should make you feel better.\n"
+                    "It doesn't.\n"
+                )
             else:
                 invalid_choice()
         else:
             invalid_choice()
     else:
-        print("As you look around, you hear a noise coming from the kitchen.")
+        typewriter_print(
+            "----------------------------------\n"
+            "The house is quiet except for the crackling fire.\n"
+            "And something else.\n"
+            "A sound from deeper in the house.\n"
+            "The kitchen, you think.\n"
+            "Could be the wind. An open window.\n"
+            "Could be the owner of this house, finally showing themselves.\n"
+            "Or it could be something else entirely.\n"
+            "\nYou move cautiously toward the kitchen, staying alert.\n"
+        )
 
     # Branch consequences of car_was_destroyed
     if not car_was_destroyed:
-        print("You notice a small desk with a lamp and some papers on it, its drawer is slightly open with several cables hanging out of it.")
-        print("The noises from the kitchen suddenly get louder as you move towards it.")
-        decision_11 = input("Do you want to search the desk or investigate the noises from the kitchen? (Type 'SEARCH' or 'KITCHEN') ")
-        if decision_11.lower() == 'search':
-            print("----------------------------------")
-            print("You walk over to the desk and open the drawer fully.")
-            print("There's a jumble of old papers, with a lot of cables covering everything inside.")
-            print("Suddenly, you hear a loud crash from the kitchen, making you flinch.")
-            decision_12 = input("Do you want to keep searching the desk or go to the kitchen? (Type 'SEARCH' or 'KITCHEN') ")
+        if leg_was_treated:
+            typewriter_print(
+                "----------------------------------\n"
+                "You steady yourself and look around the living room.\n"
+                "The kitchen sounds continue — wet, rhythmic, accompanied by low breathing.\n"
+                "It's feeding.\n"
+                "Whatever's in there is too focused on its meal to notice you.\n"
+                "For now.\n"
+                "The smell reaches you — raw meat, blood, the sharp tang of a fresh kill.\n"
+                "Near the window, you spot a small desk, its drawer hanging open.\n"
+                "Cables spill from it. Papers scattered inside.\n"
+                "If there's a replacement fuse in this house, it would be there.\n"
+                "That fuse could get your car running. Get you out of here.\n"
+                "But every movement risks noise.\n"
+                "And the thing in the kitchen... you don't know how long it'll stay distracted.\n"
+            )
+        else:
+            typewriter_print(
+                "----------------------------------\n"
+                "You're still on the floor, or slumped against furniture.\n"
+                "The room tilts and sways.\n"
+                "Too much blood lost. Too much time passed.\n"
+                "From the kitchen, the sounds continue.\n"
+                "Wet tearing. Heavy chewing. Something being consumed.\n"
+                "The smell hits you — raw meat, blood.\n"
+                "It's in there. Feeding.\n"
+                "You need to move. Need to hide. Need to do *something*.\n"
+                "But your body barely responds.\n"
+                "Near the window, there's a desk. Drawer open.\n"
+                "Maybe there's something useful there.\n"
+                "Or maybe you should just stay still. Silent.\n"
+                "Hope it finishes and leaves.\n"
+                "Every choice could be your last.\n"
+            )    
+        typewriter_print(
+            "\nDo you search the desk for supplies or check what's in the kitchen? (Type 'DESK' or 'KITCHEN') "
+        )
+        decision_11 = input("")
+        if decision_11.lower() == 'desk':
+            typewriter_print("----------------------------------")
+            if not leg_was_treated:
+                typewriter_print(
+                    "You drag yourself toward the desk.\n"
+                    "Each movement is agony. Your leg leaves a blood trail across the floor.\n"
+                    "Smear. Drag. Smear.\n"
+                    "The desk is only ten feet away.\n"
+                    "It might as well be a mile.\n"
+                    "You grip the edge and pull yourself up, gasping.\n"
+                    "Black spots dance in your vision.\n"
+                    "The drawer hangs open. Cables. Papers. Junk.\n"
+                    "Your hands shake as you search.\n"
+                    "From the kitchen: a loud **CRACK**.\n"
+                    "Bone breaking. Marrow being consumed.\n"
+                    "You freeze, hand buried in the drawer.\n"
+                    "The chewing continues.\n"
+                    "It hasn't noticed you.\n"
+                    "Yet.\n"
+                    "You keep searching, moving as quietly as your trembling hands allow.\n"
+                )
+            else:
+                typewriter_print(
+                    "You move to the desk, keeping your steps light.\n"
+                    "Your treated leg aches with each step, but you can manage.\n"
+                    "The drawer is already open, spilling cables and papers.\n"
+                    "You start searching carefully, trying not to make noise.\n"
+                    "Old receipts. Instruction manuals. Dead batteries.\n"
+                    "From the kitchen, the sounds continue.\n"
+                    "Wet tearing. Bone cracking. Heavy breathing.\n"
+                    "Whatever it's eating is substantial.\n"
+                    "Keeping it occupied.\n"
+                    "A loud SNAP makes you flinch — another bone breaking.\n"
+                    "But the chewing doesn't stop.\n"
+                    "It's too focused on its meal to notice you.\n"
+                    "You keep searching.\n"
+                )
+            typewriter_print(
+                "\nA crash from the kitchen — something metal hitting the floor. Do you keep searching or investigate? (Type 'SEARCH' or 'KITCHEN') "
+            )
+            decision_12 = input("")
             if decision_12.lower() == 'search':
-                print("----------------------------------")
-                print("You decide to keep searching the desk despite the noise.")
-                print("You delve through the mess of cables and papers, determined to find something useful.")
-                print("But the sound from the kitchen seems to be approaching, making it hard to concentrate.")
-                print("You hear a low growl coming from there, sending chills down your spine.")
+                typewriter_print("----------------------------------")
+                if not leg_was_treated:
+                    typewriter_print(
+                        "You decide to keep searching despite the pain.\n"
+                        "Your vision tunnels. The edges go gray.\n"
+                        "Blood loss. You're running out of time.\n"
+                        "You push deeper into the drawer, ignoring the cables that snag your fingers.\n"
+                        "A loud crash from the kitchen — something heavy hitting the floor.\n"
+                        "Then a wet dragging sound.\n"
+                        "**It's moving.**\n"
+                        "Your heart hammers. Your hands won't stop shaking.\n"
+                        "Papers scatter. Cables fall.\n"
+                        "From the kitchen: a low, rumbling growl.\n"
+                        "Not the satisfied sound of eating.\n"
+                        "You knocked something over. It heard.\n"
+                        "The dragging sound stops.\n"
+                        "Silence.\n"
+                        "Then: sniffing.\n"
+                        "Getting closer.\n"
+                        "**It's coming.**\n"
+                    )
+                    return
+                else:
+                    typewriter_print(
+                        "You dig deeper, moving cables aside methodically.\n"
+                        "Papers. More cables. Old phone chargers.\n"
+                        "Your fingers brush something small and cylindrical at the bottom.\n"
+                        "**Wait—**\n"
+                        "From the kitchen: a loud crash.\n"
+                        "Metal clattering. Something heavy knocked over.\n"
+                        "The chewing stops abruptly.\n"
+                        "You freeze.\n"
+                        "A low growl rumbles through the house.\n"
+                        "Then claws on linoleum. **Click. Click. Click.**\n"
+                        "Coming this way.\n"
+                        "It's no longer distracted.\n"
+                    )
+                
+                typewriter_print(
+                    "\nThe growling is getting closer. Do you keep searching desperately or face what's coming? (Type 'SEARCH' or 'KITCHEN') "
+                )
                 decision_13 = input("Do you want to keep searching the desk or finally go to the kitchen? (Type 'SEARCH' or 'KITCHEN') ")
                 if decision_13.lower() == 'search':
-                    print("----------------------------------")
-                    print("As you sift through the mess, you find a car fuse tucked away at the bottom of the drawer!")
-                    print("Feeling relieved, you now have what you need to fix your car.")
-                    fuse_found = True
-                    print("As you put the fuse in your pocket, the growling from the kitchen grows louder.")
-                    print("You realize you need to confront whatever is in there soon.")
-                elif decision_13.lower() == 'kitchen':
-                    print("----------------------------------")
-                    print("You steel yourself and head to the kitchen.")
-                    print("As you enter, you see a large wolf rummaging through the cabinets.")
-                    print("It seems the door behind the beast was left open, and it must have followed you in.")
-                    print("It looks up at you, startled, and growls menacingly.")
-                    print("You slowly back away, trying not to provoke it further.")
-                    if injured_by_wolf:
-                        print("This is the same wolf that bit you earlier.")
-                        if not leg_was_treated:
-                            print("As it slowly moves toward you, your wound throbs painfully. You can't move.")
-                            print("The wolf lunges at you again, but this time, you can't escape its grasp.")
-                            print("It bites you in your neck this time, holding you firmly in its grasp. There is no escape.")
-                            print("The light fades from your eyes as you succumb to your injuries.")
-                            print("GAME OVER")
-                            return
-                        else: 
-                            print("You feel the pain where he bit you earlier. Will you be able to outrun it again?")
-                            print("You need to think quickly to avoid another attack.")
-                            print("The door behind the kitchen is open, maybe you can make a run for it.")
+                    typewriter_print("----------------------------------")
+                    if not leg_was_treated:
+                        typewriter_print(
+                            "You can't stop now. You're so close.\n"
+                            "Your hands tear through the drawer, frantic.\n"
+                            "Papers fly. Cables snap.\n"
+                            "**There!**\n"
+                            "At the very bottom, wedged in the back corner.\n"
+                            "A car fuse. The right size.\n"
+                            "You grab it, shoving it into your pocket.\n"
+                            "But the movement costs you.\n"
+                            "Your leg gives out. You collapse against the desk.\n"
+                            "The desk scrapes loudly across the floor.\n"
+                            "**No no no—**\n"
+                            "The growling from the kitchen becomes a snarl.\n"
+                            "You hear it burst through the doorway.\n"
+                            "Claws scrabbling. Paws hitting hardwood.\n"
+                            "You turn your head.\n"
+                            "It's right there.\n"
+                            "Massive. Dark fur matted with blood. Eyes glowing in the firelight.\n"
+                            "Its muzzle is stained red, lips pulled back over teeth as long as your fingers.\n"
+                            "This is the same creature that bit you.\n"
+                            "And now you're on the ground, bleeding, helpless.\n"
+                            "It recognizes you too. Its snarl deepens.\n"
+                            "Prey that got away.\n"
+                            "It lunges.\n"
+                            "You try to crawl, but your leg is useless.\n"
+                            "Its jaws close around your throat.\n"
+                            "The pressure is immense. Crushing.\n"
+                            "You can't scream. Can't breathe.\n"
+                            "The last thing you feel is your blood, hot against your skin.\n"
+                            "The last thing you see is those yellow eyes, burning with hunger.\n"
+                            "GAME OVER\n"
+                        )
+                        return
                     else:
-                        print("You realize you need to get out of here quickly.")
-                        print("You see the door behind it open, maybe you can outrun it.")
+                        typewriter_print(
+                            "You have to find it. Now.\n"
+                            "Your hands dive to the bottom of the drawer.\n"
+                            "And there — wedged in the corner — a car fuse.\n"
+                            "**Yes!**\n"
+                            "You grab it and shove it into your pocket.\n"
+                            "The clawing sounds are right outside the living room.\n"
+                            "You turn toward the kitchen doorway.\n"
+                            "**It's there.**\n"
+                            "Massive. Dark. Blood dripping from its muzzle.\n"
+                            "The wolf from the forest.\n"
+                            "It found you.\n"
+                            "Its eyes lock onto yours.\n"
+                            "Yellow. Glowing. Intelligent.\n"
+                            "It remembers you.\n"
+                            "Its lips pull back in a snarl.\n"
+                            "But then it hesitates.\n"
+                            "Your leg. The bandage. The smell of the treatment.\n"
+                            "Something about you has changed.\n"
+                            "It tilts its head, nostrils flaring.\n"
+                            "Confusion. Almost... recognition?\n"
+                            "The moment stretches.\n"
+                            "Then a low growl builds in its chest.\n"
+                            "Hunger wins.\n"
+                            "You have the fuse. But the wolf is between you and the door.\n"
+                            "The back door — through the kitchen — that's your only escape route.\n"
+                            "You need to move. Now.\n"
+                        )
+                        fuse_found = True
+                elif decision_13.lower() == 'kitchen':
+                    typewriter_print("----------------------------------")
+                    if not leg_was_treated:
+                        typewriter_print(
+                            "You abandon the search and turn toward the kitchen.\n"
+                            "Each step sends lightning through your leg.\n"
+                            "You grip the wall, the furniture, anything to stay upright.\n"
+                            "Blood trails behind you.\n"
+                            "As you reach the kitchen doorway, you see it.\n"
+                            "**The wolf.**\n"
+                            "Massive. Shoulders as high as your waist.\n"
+                            "It's standing over something on the floor — dark, torn, unrecognizable.\n"
+                            "Its muzzle is stained red, dripping.\n"
+                            "When it sees you, it goes still.\n"
+                            "Those yellow eyes lock onto yours.\n"
+                            "**Recognition.**\n"
+                            "This is the creature that bit you.\n"
+                            "Its lips pull back slowly. A warning growl.\n"
+                            "You try to back away, but your leg gives out.\n"
+                            "You collapse, hitting the floor hard.\n"
+                            "The wolf's ears prick forward.\n"
+                            "**Weakness.**\n"
+                            "It smells your blood. Fresh. Flowing.\n"
+                            "The growl becomes a snarl.\n"
+                            "It charges.\n"
+                            "You raise your arms instinctively, but it's pointless.\n"
+                            "The weight of it crashes into you.\n"
+                            "Teeth find your throat.\n"
+                            "The pain is sharp, then numb, then nothing.\n"
+                            "GAME OVER\n"
+                        )
+                        return
+                    else:
+                        typewriter_print(
+                            "You steel yourself and move toward the kitchen.\n"
+                            "Your leg protests, but you can manage.\n"
+                            "At the doorway, you stop.\n"
+                            "**There it is.**\n"
+                            "The wolf. The same one from the forest.\n"
+                            "It's hunched over something on the floor.\n"
+                            "Dark. Bloody. You don't look too closely.\n"
+                            "The creature is enormous in the enclosed space.\n"
+                            "Its fur is matted with blood and dirt.\n"
+                            "As you watch, it tears another chunk of meat free.\n"
+                            "Then it pauses.\n"
+                            "Its head lifts slowly.\n"
+                            "Nostrils flare.\n"
+                            "It smells you.\n"
+                            "Those yellow eyes turn toward you.\n"
+                            "For a moment, neither of you moves.\n"
+                            "Your treated wound throbs. The salve. The medicine.\n"
+                            "The wolf's nostrils flare again.\n"
+                            "Its head tilts, almost curious.\n"
+                            "Something about your scent has changed.\n"
+                            "But then its lips pull back.\n"
+                            "A low growl builds in its chest.\n"
+                            "Changed or not, you're still prey.\n"
+                            "And it hasn't finished eating.\n"
+                            "Behind it, you see the back door — standing open.\n"
+                            "That's how it got in.\n"
+                            "That's your way out.\n"
+                            "But the wolf is between you and freedom.\n"
+                        )
                 else:
                     invalid_choice()
             elif decision_12.lower() == 'kitchen':
-                print("----------------------------------")
-                print("You decide to investigate the kitchen and find out what is making that noise.")
-                print("As you approach the door, you see a large wolf sniffing the floor close to the cabinets.")
-                print("Someone left the back door open - an easy way for it to slip inside.")
-                print("It is sniffing for your scent, growing menacingly.")
-                if injured_by_wolf:
-                    print("You recognize the wolf that bit you earlier.")
-                    if not leg_was_treated:
-                        print("Your untreated wound throbs painfully, making it hard to move quickly.")
-                        print("While you look for an escape route, the wolf sniffs your scent and turns to face you.")
-                        print("It grows menacingly and lunges at you, and this time, you can't escape it.")
-                        print("You fight as hard as you can, but you are too weak to resist its strength.")
-                        print("You succumb to your injuries shortly after.")
-                        print("GAME OVER")
-                        return
-                    else:
-                        print("Your leg was healed, but is still hurting. Will you be able to escape it again?")
-                        print("It hasn't noticed you yet, maybe you can make a run for the open door behind the kitchen.")
+                typewriter_print("----------------------------------")
+                if not leg_was_treated:
+                    typewriter_print(
+                        "You need to know what's in there.\n"
+                        "You push away from the desk, using the wall for support.\n"
+                        "Each step is agony. Your leg drags uselessly.\n"
+                        "Blood soaks through your bandage, dripping with each movement.\n"
+                        "You reach the kitchen doorway and peer inside.\n"
+                        "**The wolf.**\n"
+                        "It's there, hunched over something dark and torn on the floor.\n"
+                        "Feeding.\n"
+                        "Its shoulders ripple with each movement.\n"
+                        "Then it stops.\n"
+                        "Its head lifts.\n"
+                        "Sniffing.\n"
+                        "Your blood.\n"
+                        "The wolf turns its head slowly, fixing you with those yellow eyes.\n"
+                        "It recognizes you. The prey that escaped.\n"
+                        "A low growl rumbles from deep in its chest.\n"
+                        "You try to back away, but your leg gives out.\n"
+                        "You hit the floor hard.\n"
+                        "The wolf is on you before you can even scream.\n"
+                        "Its weight crushes you. Its teeth find your neck.\n"
+                        "This time, there's no escape.\n"
+                        "GAME OVER\n"
+                    )
+                    return
                 else:
-                    print("The wolf hasn't completely noticed you yet, but you need to act fast.")
-                    print("You see the door behind it open, it might be your only chance to escape.")
+                    typewriter_print(
+                        "You move toward the kitchen, each step deliberate.\n"
+                        "Your leg aches but holds.\n"
+                        "At the doorway, you stop and look inside.\n"
+                        "**There.**\n"
+                        "The wolf. Massive and dark, hunched over its kill.\n"
+                        "You can see the back door standing open behind it.\n"
+                        "That's how it got in.\n"
+                        "The creature tears at the meat, too focused to notice you yet.\n"
+                        "But then the wind shifts.\n"
+                        "Its ears swivel toward you.\n"
+                        "Its head rises slowly.\n"
+                        "Nostrils flare. Testing the air.\n"
+                        "**It knows you're there.**\n"
+                        "Those yellow eyes turn toward you, locking on.\n"
+                        "For a heartbeat, neither of you moves.\n"
+                        "Then its lips pull back, revealing blood-stained teeth.\n"
+                        "A growl builds in its chest.\n"
+                        "The back door is right there.\n"
+                        "But so is the wolf.\n"
+                    )
             else:
                 invalid_choice()
         elif decision_11.lower() == 'kitchen':
-            print("----------------------------------")
+            typewriter_print("----------------------------------")
             print("The noises get your attention and you head to the kitchen.")
             print("From the shadows you see a large wolf sifting through the cabinets.")
             print("Someone left the door behind the kitchen open, and it must have followed you in.")
@@ -373,26 +1122,58 @@ def play_game():
         else:
             invalid_choice()
     else:
-        print("----------------------------------")
-        print("You need to confront whatever is in there.")
-        if not leg_was_treated:
-            print("You try to move, but your wounded leg gives out instantly.")
-            print("A sharp, burning pain cuts through you like a blade and you let out a strained cry.")
-            print("It’s enough.")
-            print("The wolf’s head snaps toward you, its eyes locking onto you with feral hunger.")
-            print("You glance around desperately — there’s only the fireplace poker within reach.")
-            print("You drag yourself toward it, fingers brushing the cold metal, but the wolf is faster.")
-            print("It crashes into you, slamming you to the floor. Its jaws clamp onto your shoulder, then your throat.")
-            print("The pain is blinding. Your body weakens. Darkness closes in.")
-            print("You should have treated your wound before trying to run.")
-            print("GAME OVER")
-            return
+        if leg_was_treated:
+            typewriter_print(
+                "----------------------------------\n"
+                "You pull yourself to your feet, testing your treated leg.\n"
+                "It holds. Painful, but functional.\n"
+                "From the kitchen, the sounds continue.\n"
+                "Wet tearing. Bone cracking. Heavy, rhythmic breathing.\n"
+                "Feeding.\n"
+                "The smell drifts through the house — raw meat, blood, animal musk.\n"
+                "Whatever's in there is consuming something.\n"
+                "The car is gone. Burned. No escape that way.\n"
+                "You're trapped in this house with it.\n"
+                "The front door is locked — you made sure it was when you came in.\n"
+                "Which means the only other exit is through the kitchen.\n"
+                "The back door.\n"
+                "But that means getting past whatever's in there.\n"
+                "You need to know what you're dealing with.\n"
+                "You need to see it.\n"
+            )
         else:
-            print("After gathering your courage, you head to the kitchen cautiously.")
-            print("On the far side of the kitchen, you see a large wolf sniffing the floor, searching for your scent.")
-            print("You can see the door behind it standing open, that's how it followed you in.")
-            print("That door might be your only way to escape.")
-            print("But if you make any sudden movement, it might notice you.")
+            # Untreated wound + no car = death is imminent
+            typewriter_print(
+                "----------------------------------\n"
+                "You try to move, but your wounded leg gives out instantly.\n"
+                "A sharp, burning pain cuts through you like a blade.\n"
+                "You let out a strained cry before you can stop yourself.\n"
+                "It's enough.\n"
+                "The sounds from the kitchen stop abruptly.\n"
+                "Silence.\n"
+                "Then you hear it — claws on linoleum.\n"
+                "Click. Click. Click.\n"
+                "Coming closer.\n"
+                "Through the kitchen doorway, you see movement.\n"
+                "A massive shape. Dark fur. Eyes reflecting the firelight.\n"
+                "The wolf.\n"
+                "Its muzzle is stained red. Dripping.\n"
+                "It sees you on the floor. Wounded. Bleeding. Helpless.\n"
+                "Its lips pull back in a snarl.\n"
+                "Prey.\n"
+                "You try to crawl, but there's nowhere to go.\n"
+                "The wolf crosses the distance in two bounds.\n"
+                "Its weight crushes you to the floor.\n"
+                "Teeth sink into your throat.\n"
+                "The pressure is immense. Final.\n"
+                "You should have treated your wound.\n"
+                "You should have stayed quiet.\n"
+                "GAME OVER\n"
+            )
+            return
+        typewriter_print(
+            "\nYou move cautiously toward the kitchen, staying alert.\n"
+        )
 
     # Final decisions
     print("----------------------------------")
